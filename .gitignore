@@ -1,8 +1,8 @@
 # Frontend
-前端模块/admin-web/node_modules/
-前端模块/admin-web/dist/
-前端模块/admin-web/.vite/
-前端模块/admin-web/*.tsbuildinfo
+frontend-module/admin-web/node_modules/
+frontend-module/admin-web/dist/
+frontend-module/admin-web/.vite/
+frontend-module/admin-web/*.tsbuildinfo
 
 # Go / build outputs
 *.exe
