@@ -1,0 +1,102 @@
+<!--index.wxml-->
+<navigation-bar title="首页" back="{{false}}" color="#ffffff" background="transparent"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="page">
+    <view class="banner-section">
+      <swiper
+        class="banner-swiper"
+        autoplay
+        circular
+        interval="4000"
+        duration="500"
+        current="{{currentBannerIndex}}"
+        bindchange="onBannerChange"
+      >
+        <block wx:for="{{banners}}" wx:key="title">
+          <swiper-item>
+            <view
+              class="banner-card"
+              style="background: {{item.background}};"
+              bindtap="onBannerTap"
+              data-target="{{item.jumpTarget}}"
+            >
+              <view class="banner-card__content">
+                <view class="banner-card__title">{{item.title}}</view>
+                <view class="banner-card__desc">{{item.subTitle}}</view>
+              </view>
+              <view class="banner-card__chip">后台可配</view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <view class="banner-dots">
+        <block wx:for="{{banners}}" wx:key="title" wx:for-index="index">
+          <view class="banner-dot {{currentBannerIndex === index ? 'banner-dot--active' : ''}}"></view>
+        </block>
+      </view>
+    </view>
+
+    <view class="notice-strip">
+      <view class="notice-strip__label">公告</view>
+      <view class="notice-strip__text">{{announcement}}</view>
+    </view>
+
+    <view class="stats">
+      <block wx:for="{{stats}}" wx:key="label">
+        <view class="stat-card">
+          <view class="stat-card__value">{{item.value}}</view>
+          <view class="stat-card__label">{{item.label}}</view>
+        </view>
+      </block>
+    </view>
+
+    <view class="section">
+      <view class="section__header">
+        <view class="section__title">快捷入口</view>
+        <view class="section__tip">套餐页 / 订单页 / 我的页</view>
+      </view>
+
+      <view class="quick-grid">
+        <block wx:for="{{quickEntries}}" wx:key="key">
+          <view class="quick-card" bindtap="onQuickTap" data-key="{{item.key}}">
+            <view class="quick-card__title">{{item.title}}</view>
+            <view class="quick-card__desc">{{item.desc}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section__header">
+        <view class="section__title">热门套餐</view>
+        <view class="section__tip">后台标记热门后首页自动展示</view>
+      </view>
+
+      <view class="package-list">
+        <block wx:for="{{hotPackages}}" wx:key="title">
+          <view class="package-card" bindtap="onPackageTap" data-title="{{item.title}}">
+            <view class="package-card__top">
+              <view>
+                <view class="package-card__title">{{item.title}}</view>
+                <view class="package-card__highlight">{{item.highlight}}</view>
+              </view>
+              <view class="package-card__badge">{{item.badge}}</view>
+            </view>
+
+            <view class="package-card__price-row">
+              <view class="package-card__price">{{item.price}}</view>
+              <view class="package-card__origin">{{item.originalPrice}}</view>
+            </view>
+
+            <view class="tag-row">
+              <block wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">
+                <view class="tag">{{tag}}</view>
+              </block>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</scroll-view>

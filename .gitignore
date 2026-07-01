@@ -1,0 +1,16 @@
+# Frontend
+前端模块/admin-web/node_modules/
+前端模块/admin-web/dist/
+前端模块/admin-web/.vite/
+前端模块/admin-web/*.tsbuildinfo
+
+# Go / build outputs
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Logs and temp files
+*.log
+*.tmp
+*.cache
